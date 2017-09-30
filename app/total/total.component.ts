@@ -15,8 +15,6 @@ interface TokenResponse {
     styleUrls: ['./total.component.css']
 })
 export class TotalComponent implements OnInit {
-    token: string;
-
     // inject http into component
     constructor(private http: HttpClient) { }
 
@@ -24,7 +22,7 @@ export class TotalComponent implements OnInit {
 
     onLogin(username: string, password: string) {
         // triggered when login button is clicked
-        let body = {
+        const body = {
             username: username,
             password: password
         };
@@ -32,7 +30,18 @@ export class TotalComponent implements OnInit {
         // get token from the server
         this.http.post<TokenResponse>('http://accounting.loc/api/auth/login/', body).subscribe(
             res => {
-                console.log('Token: ' + res.auth_token);
+                // save token locally
+                localStorage.setItem('token', res.auth_token);
+
+                // get total from the server
+                this.http.get('http://accounting.loc/api/total/').subscribe(
+                    res => {
+                        console.log('Res: ' + res);
+                    },
+                    err => {
+                        console.log('Error: ' + err.message);
+                    }
+                );
             },
             err => {
                 console.log('Error: ' + err.message);

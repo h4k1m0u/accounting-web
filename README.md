@@ -16,9 +16,10 @@ $ ng
 ```
 
 2. Install `angular-cli`: `npm install -g @angular/cli`
-3. Create a new project: `ng new <project-name>`
-4. Run the server: `ng serve`
-5. Create a new component: `ng generate component <component-name>`
+3. Install `rxjs`: `npm install -g rxjs`
+4. Create a new project: `ng new <project-name>`
+5. Run the server: `ng serve`
+6. Create a new component: `ng generate component <component-name>`
 
 # Installation of this repo
 
