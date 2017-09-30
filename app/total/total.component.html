@@ -1,3 +1,5 @@
-<p>
-  total works!
-</p>
+<form>
+    <input type="text" placeholder="username" #username />
+    <input type="text" placeholder="password" #password />
+    <input type="submit" value="Login" (click)="onLogin(username.value, password.value)" />
+</form>

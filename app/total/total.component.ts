@@ -20,21 +20,23 @@ export class TotalComponent implements OnInit {
     // inject http into component
     constructor(private http: HttpClient) { }
 
-    ngOnInit() {
-        // get token from the server
+    ngOnInit() { }
+
+    onLogin(username: string, password: string) {
+        // triggered when login button is clicked
         let body = {
-            username: 'hakim',
-            password: 'L57f841C'
+            username: username,
+            password: password
         };
 
+        // get token from the server
         this.http.post<TokenResponse>('http://accounting.loc/api/auth/login/', body).subscribe(
             res => {
-                console.log(res.auth_token);
+                console.log('Token: ' + res.auth_token);
             },
             err => {
-                console.log(err);
+                console.log('Error: ' + err.message);
             }
         );
     }
-
 }
