@@ -20,6 +20,7 @@ $ ng
 4. Create a new project: `ng new <project-name>`
 5. Run the server: `ng serve`
 6. Create a new component: `ng generate component <component-name>`
+7. Create a new service: `ng generate service <service-name>`
 
 # Installation of this repo
 

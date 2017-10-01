@@ -5,9 +5,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface TokenResponse {
-    auth_token: string;
-}
 
 @Component({
     selector: 'app-total',
@@ -15,33 +12,17 @@ interface TokenResponse {
     styleUrls: ['./total.component.css']
 })
 export class TotalComponent implements OnInit {
-    // inject http into component
+    total: number;
+
+    // inject http
     constructor(private http: HttpClient) { }
 
-    ngOnInit() { }
-
-    onLogin(username: string, password: string) {
-        // triggered when login button is clicked
-        const body = {
-            username: username,
-            password: password
-        };
-
-        // get token from the server
-        this.http.post<TokenResponse>('http://accounting.loc/api/auth/login/', body).subscribe(
+    ngOnInit() {
+        // get total from the server
+        this.http.get<number>('http://accounting.loc/api/total/').subscribe(
             res => {
-                // save token locally
-                localStorage.setItem('token', res.auth_token);
-
-                // get total from the server
-                this.http.get('http://accounting.loc/api/total/').subscribe(
-                    res => {
-                        console.log('Res: ' + res);
-                    },
-                    err => {
-                        console.log('Error: ' + err.message);
-                    }
-                );
+                this.total = res;
+                console.log('Res: ' + res);
             },
             err => {
                 console.log('Error: ' + err.message);
