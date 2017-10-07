@@ -3,3 +3,7 @@
     <input type="text" placeholder="password" #password />
     <input type="submit" value="Login" (click)="onLogin(username.value, password.value)" />
 </form>
+
+<p>{{ usernameError }}</p>
+<p>{{ passwordError }}</p>
+<p>{{ generalError }}</p>
