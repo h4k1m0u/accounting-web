@@ -22,7 +22,6 @@ export class TotalComponent implements OnInit {
         this.http.get<number>('http://accounting.loc/api/total/').subscribe(
             res => {
                 this.total = res;
-                console.log('Res: ' + res);
             },
             err => {
                 console.log('Error: ' + err.message);

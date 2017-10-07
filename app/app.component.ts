@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -7,13 +8,24 @@ import { AuthService } from './services/auth.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'Accounting';
-    isLogged: boolean;
+    appName = 'Accounting';
+    isLogged: boolean = false;
     
     // inject auth
-    constructor(private auth: AuthService) { }
+    constructor(private auth: AuthService, private router: Router, private cdRef:ChangeDetectorRef) { }
 
     ngOnInit() {
-        this.isLogged = this.auth.isLogged();
+        // receive boolean from login/logout components to update menu
+        this.auth.logged.subscribe((isLogged) => {
+            // run change detection to avoid ExpressionChangedAfterItHasBeenCheckedError
+            this.isLogged = isLogged;
+            this.cdRef.detectChanges();
+        });
+
+        // redirect according to whether user logged in
+        if (this.isLogged)
+            this.router.navigateByUrl('/total');
+        else
+            this.router.navigateByUrl('/login');
     }
 }

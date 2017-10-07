@@ -7,13 +7,13 @@ import { AuthService } from '../services/auth.service';
 
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export class LoginInterceptor implements HttpInterceptor {
     // inject auth
     constructor(private auth: AuthService) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // get token
-        const token = this.auth.getToken();
+        const token = this.auth.token;
 
         // add token (if it exists) to request header
         if (token) {

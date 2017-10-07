@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class AuthService {
+    token: string;
+
+    // Signal user's login/logout to communicate between components
+    // http://www.iamnotanengineer.com/2017/angular-4-what-is-a-subject-and-how-it-can-be-used-basic-example/
+    logged: Subject<boolean> = new Subject<boolean>();
+
     constructor() { }
 
     login(token: string) {
         // save token on login
-        localStorage.setItem('token', token);
+        this.token = token;
     }
 
-    isLogged(): boolean {
-        // check if saved token
-        const token = localStorage.getItem('token');
-        return token ? true : false;
-    }
-
-    getToken(): string {
-        return localStorage.getItem('token');
+    logout() {
+        // delete token on logout
+        this.token = '';
     }
 }

@@ -5,19 +5,20 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 interface TokenResponse {
     auth_token: string;
 }
 
 @Component({
-    selector: 'app-auth',
-    templateUrl: './auth.component.html',
-    styleUrls: ['./auth.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
-export class AuthComponent implements OnInit {
+export class LoginComponent implements OnInit {
     // inject http and auth
-    constructor(private http: HttpClient, private auth: AuthService) { }
+    constructor(private http: HttpClient, private auth: AuthService, private router: Router) { }
 
     ngOnInit() { }
 
@@ -34,7 +35,11 @@ export class AuthComponent implements OnInit {
                 // login with token
                 this.auth.login(res.auth_token);
 
-                // reload page
+                // send isLogged=true to app component
+                this.auth.logged.next(true);
+
+                // redirect to /total
+                this.router.navigateByUrl('/total');
             },
             err => {
                 console.log('Error: ' + err.message);
