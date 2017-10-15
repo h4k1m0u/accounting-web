@@ -53,8 +53,8 @@ export class LoginComponent implements OnInit {
                 // send isLogged=true to app component
                 this.auth.logged.next(true);
 
-                // redirect to /total
-                this.router.navigateByUrl('/total');
+                // redirect to /expenses
+                this.router.navigateByUrl('/expenses');
             },
             (err: ErrorResponse) => {
                 let error = err.error;

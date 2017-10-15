@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TotalComponent } from './total/total.component';
+import { ExpensesComponent } from './expenses/expenses.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 
@@ -21,6 +22,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
+    {path: 'expenses', component: ExpensesComponent},
     {path: 'total', component: TotalComponent},
     {path: 'logout', component: LogoutComponent}
 ];
@@ -30,6 +32,7 @@ const routes: Routes = [
     declarations: [
         AppComponent,
         TotalComponent,
+        ExpensesComponent,
         LoginComponent,
         LogoutComponent,
     ],

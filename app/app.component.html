@@ -4,6 +4,7 @@
 
 <nav>
     <a *ngIf="!isLogged" routerLink="/login">Login</a>
+    <a *ngIf="isLogged" routerLink="/expenses">Expenses</a>
     <a *ngIf="isLogged" routerLink="/total">Total</a>
     <a *ngIf="isLogged" routerLink="/logout">Logout</a>
 </nav>
