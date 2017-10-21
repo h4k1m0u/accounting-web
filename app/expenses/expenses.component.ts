@@ -5,6 +5,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { URL } from '../constants';
 
 interface Expense {
     date: string;
@@ -35,7 +36,7 @@ export class ExpensesComponent implements OnInit {
             amount: amount
         };
 
-        this.http.post<string>('http://accounting.loc/api/expenses/', body).subscribe(
+        this.http.post<string>(URL + '/api/expenses/', body).subscribe(
             res => {
                 console.log('Expense added successfully');
 
@@ -52,7 +53,7 @@ export class ExpensesComponent implements OnInit {
 
     get_expenses() {
         // get expenses from the server
-        this.http.get<Expense[]>('http://accounting.loc/api/expenses/').subscribe(
+        this.http.get<Expense[]>(URL + '/api/expenses/').subscribe(
             res => {
                 this.expenses = res;
             },

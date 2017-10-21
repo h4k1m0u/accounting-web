@@ -4,7 +4,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { URL } from '../constants';
 
 @Component({
     selector: 'app-total',
@@ -19,7 +19,7 @@ export class TotalComponent implements OnInit {
 
     ngOnInit() {
         // get total from the server
-        this.http.get<number>('http://accounting.loc/api/total/').subscribe(
+        this.http.get<number>(URL + '/api/total/').subscribe(
             res => {
                 this.total = res;
             },

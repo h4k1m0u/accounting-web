@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { URL } from '../constants';
 
 // Success and error response interfaces
 interface TokenResponse {
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
         };
 
         // get token from the server
-        this.http.post<TokenResponse>('http://accounting.loc/api/auth/login/', body).subscribe(
+        this.http.post<TokenResponse>(URL + '/api/auth/login/', body).subscribe(
             (res: TokenResponse) => {
                 // login with token
                 this.auth.login(res.auth_token);

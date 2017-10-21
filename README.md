@@ -25,3 +25,11 @@ $ ng
 # Installation of this repo
 
 Just replace the `/src` folder using the content of this repo
+
+# Deploy app to server
+
+```sh
+$ ng build --prod
+```
+
+And a `dist` folder will be created at the root of the project.
