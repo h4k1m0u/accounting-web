@@ -38,8 +38,6 @@ export class ExpensesComponent implements OnInit {
 
         this.http.post<string>(URL + '/api/expenses/', body).subscribe(
             res => {
-                console.log('Expense added successfully');
-
                 // reload expenses
                 this.get_expenses()
             },

@@ -1,12 +1,13 @@
 <h1>
-  {{ appName }}
+    {{ appName }}
 </h1>
 
 <nav>
     <a *ngIf="!isLogged" routerLink="/login">Login</a>
+    <a *ngIf="!isLogged" routerLink="/register">Register</a>
     <a *ngIf="isLogged" routerLink="/expenses">Expenses</a>
     <a *ngIf="isLogged" routerLink="/total">Total</a>
-    <a *ngIf="isLogged" routerLink="/logout">Logout</a>
+    <a *ngIf="isLogged" routerLink="/logout">Logout (<app-user></app-user>)</a>
 </nav>
 
 <router-outlet></router-outlet>

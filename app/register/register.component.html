@@ -1,9 +1,11 @@
 <form>
     <input type="text" placeholder="username" #username />
     <input type="password" placeholder="password" #password />
-    <input type="submit" value="Login" (click)="onLogin(username.value, password.value)" />
+    <input type="text" placeholder="email" #email />
+    <input type="submit" value="Register" (click)="onRegister(username.value, password.value, email.value)" />
 </form>
 
 <p>{{ usernameError }}</p>
 <p>{{ passwordError }}</p>
+<p>{{ emailError }}</p>
 <p>{{ generalError }}</p>
