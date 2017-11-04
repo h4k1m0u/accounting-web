@@ -24,7 +24,7 @@ export class AppComponent {
 
         // redirect according to whether user logged in
         if (this.isLogged)
-            this.router.navigateByUrl('/total');
+            this.router.navigateByUrl('/expenses');
         else
             this.router.navigateByUrl('/login');
     }

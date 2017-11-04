@@ -1,13 +1,26 @@
-<h1>
-    {{ appName }}
-</h1>
+<main>
+    <h1>
+        {{ appName }}
+    </h1>
 
-<nav>
-    <a *ngIf="!isLogged" routerLink="/login">Login</a>
-    <a *ngIf="!isLogged" routerLink="/register">Register</a>
-    <a *ngIf="isLogged" routerLink="/expenses">Expenses</a>
-    <a *ngIf="isLogged" routerLink="/total">Total</a>
-    <a *ngIf="isLogged" routerLink="/logout">Logout (<app-user></app-user>)</a>
-</nav>
+    <header>
+        <nav>
+            <ul>
+                <li *ngIf="!isLogged">
+                    <a routerLink="/login">Login</a>
+                </li>
+                <li *ngIf="!isLogged">
+                    <a routerLink="/register">Register</a>
+                </li>
+                <li *ngIf="isLogged">
+                    <a routerLink="/expenses">Expenses</a>
+                </li>
+                <li *ngIf="isLogged">
+                    <a routerLink="/logout">Logout (<app-user></app-user>)</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+</main>

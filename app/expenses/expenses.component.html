@@ -1,3 +1,9 @@
+<form [style.display]="display">
+    <input type="text" placeholder="description" #description />
+    <input type="text" placeholder="amount" #amount />
+    <input type="submit" value="Add" (click)="onAdd(description.value, amount.value)" />
+</form>
+
 <table>
     <tr>
         <th>Date</th>
@@ -11,8 +17,12 @@
     </tr>
 </table>
 
-<form>
-    <input type="text" placeholder="description" #description />
-    <input type="text" placeholder="amount" #amount />
-    <input type="submit" value="Add" (click)="onAdd(description.value, amount.value)" />
-</form>
+<p>
+    Total: <app-total></app-total>
+<p>
+
+<button (click)="setDisplay()">Show/hide</button>
+
+<p>{{ descriptionError }}</p>
+<p>{{ amountError }}</p>
+<p>{{ generalError }}</p>

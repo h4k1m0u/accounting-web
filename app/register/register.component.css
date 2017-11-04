@@ -1,0 +1,20 @@
+input {
+    line-height: 2em;
+}
+
+input[type="text"], input[type="password"] {
+    margin-right: 0.5em;
+    border: 1px solid #cacaca;
+}
+
+input[type="submit"] {
+    color: #fff;
+    background-color: #599;
+    border-color: transparent;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+input[type="submit"]:hover {
+    background-color: #f25;
+}

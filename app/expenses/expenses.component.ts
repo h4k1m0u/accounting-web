@@ -7,11 +7,22 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { URL } from '../constants';
 
+// Success and error response interfaces
 interface Expense {
     date: string;
     description: string;
     amount: string;
     user: string;
+}
+
+interface ErrorMessage {
+    description: string[1];
+    amount: string[1];
+    non_field_errors: string[1];
+}
+
+interface ErrorResponse {
+    error: ErrorMessage;
 }
 
 @Component({
@@ -21,12 +32,16 @@ interface Expense {
 })
 export class ExpensesComponent implements OnInit {
     expenses: Expense[];
+    descriptionError: string;
+    amountError: string;
+    generalError: string;
+    display: string = 'none';
 
     // inject http
     constructor(private http: HttpClient, private router: Router) { }
 
     ngOnInit() {
-        this.get_expenses()
+        this.getExpenses()
     }
 
     onAdd(description: string, amount: number) {
@@ -39,17 +54,26 @@ export class ExpensesComponent implements OnInit {
         this.http.post<string>(URL + '/api/expenses/', body).subscribe(
             res => {
                 // reload expenses
-                this.get_expenses()
+                this.getExpenses()
             },
-            err => {
-                console.log('Error: ' + err.message);
+            (err: ErrorResponse) => {
+                let error = err.error;
+                this.descriptionError = '';
+                this.amountError = '';
+                this.generalError = '';
 
-                // TODO: Add error messages here like in /login
+                // set error messages
+                if (error.hasOwnProperty('description'))
+                    this.descriptionError = 'Description: ' + error.description[0];
+                if (error.hasOwnProperty('amount'))
+                    this.amountError = 'Amount: ' + error.amount[0];
+                if (error.hasOwnProperty('non_field_errors'))
+                    this.generalError = 'General error: ' + error.non_field_errors[0];
             }
         );
     }
 
-    get_expenses() {
+    getExpenses() {
         // get expenses from the server
         this.http.get<Expense[]>(URL + '/api/expenses/').subscribe(
             res => {
@@ -59,5 +83,10 @@ export class ExpensesComponent implements OnInit {
                 console.log('Error: ' + err.message);
             }
         );
+    }
+
+    setDisplay() {
+        // show/hide the add expense form
+        this.display = (this.display == 'none' ? 'block' : 'none');
     }
 }
