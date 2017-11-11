@@ -1,11 +1,17 @@
 <form>
-    <input type="text" placeholder="username" #username />
-    <input type="password" placeholder="password" #password />
-    <input type="text" placeholder="email" #email />
-    <input type="submit" value="Register" (click)="onRegister(username.value, password.value, email.value)" />
-</form>
+    <mat-form-field>
+        <input matInput type="text" required placeholder="Username" #username />
+    </mat-form-field>
 
-<p>{{ usernameError }}</p>
-<p>{{ passwordError }}</p>
-<p>{{ emailError }}</p>
-<p>{{ generalError }}</p>
+    <mat-form-field>
+        <input matInput type="password" required placeholder="Password" #password />
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="email" required placeholder="Email" #email />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="onRegister(username.value, password.value, email.value)">
+        Register
+    </button>
+</form>

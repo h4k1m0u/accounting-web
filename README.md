@@ -21,6 +21,7 @@ $ ng
 5. Run the server: `ng serve`
 6. Create a new component: `ng generate component <component-name>`
 7. Create a new service: `ng generate service <service-name>`
+8. Install `angular-material`: `npm install @angular/material @angular/cdk @angular/animations`
 
 # Installation of this repo
 

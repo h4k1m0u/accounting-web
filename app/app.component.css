@@ -1,46 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
-body {
-    background-color: #eed !important;
+.spacer {
+    flex: auto;
 }
 
 main {
-    padding: 20px;
-    background-color: #444;
-    color: #fff;
-    border-radius: 10px;
-    border: #f25 2px solid ;
-    font-family: "Roboto";
+    margin: 1em;
 }
 
-header {
-    margin-bottom: 1em;
-}
-
-h1 {
-    color: #f25;
-}
-
-nav {
-    border-bottom: 1px solid #fff;
-}
-
-nav ul {
-    overflow: hidden;
-    padding: 0;
-    list-style: none;
-}
-
-nav li {
-    float: left;
-    margin-right: 1em;
-}
-
-nav a {
-    text-decoration: none;
-    color: #eed;
-}
-
-nav a:hover {
-    color: #599;
+footer {
+    margin-top: auto;
 }

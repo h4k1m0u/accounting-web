@@ -1,28 +1,48 @@
-<form [style.display]="display">
-    <input type="text" placeholder="description" #description />
-    <input type="text" placeholder="amount" #amount />
-    <input type="submit" value="Add" (click)="onAdd(description.value, amount.value)" />
-</form>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Expenses
+        </mat-card-title>
+    </mat-card-header>
 
-<table>
-    <tr>
-        <th>Date</th>
-        <th>Description</th>
-        <th>Amount</th>
-    </tr>
-    <tr *ngFor="let expense of expenses">
-        <td>{{ expense.date }}</td>
-        <td>{{ expense.description }}</td>
-        <td>{{ expense.amount }}</td>
-    </tr>
-</table>
+    <mat-card-content>
+        <mat-table #table [dataSource]="expenses">
+            <!-- Name Column -->
+            <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+                <mat-cell *matCellDef="let expense">{{ expense.date }}</mat-cell>
+            </ng-container>
 
-<p>
-    Total: <app-total></app-total>
-<p>
+            <!-- Weight Column -->
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+                <mat-cell *matCellDef="let expense">{{expense.description }}</mat-cell>
+            </ng-container>
 
-<button (click)="setDisplay()">Show/hide</button>
+            <!-- Color Column -->
+            <ng-container matColumnDef="amount">
+                <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+                <mat-cell *matCellDef="let expense">{{expense.amount }}</mat-cell>
+            </ng-container>
 
-<p>{{ descriptionError }}</p>
-<p>{{ amountError }}</p>
-<p>{{ generalError }}</p>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Total
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <mat-chip-list>
+            <mat-chip>
+                <app-total></app-total>
+            </mat-chip>
+        </mat-chip-list>
+    </mat-card-content>
+</mat-card>

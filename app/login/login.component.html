@@ -1,9 +1,13 @@
 <form>
-    <input type="text" placeholder="username" #username />
-    <input type="password" placeholder="password" #password />
-    <input type="submit" value="Login" (click)="onLogin(username.value, password.value)" />
-</form>
+    <mat-form-field>
+        <input matInput type="text" required placeholder="Username" #username />
+    </mat-form-field>
 
-<p>{{ usernameError }}</p>
-<p>{{ passwordError }}</p>
-<p>{{ generalError }}</p>
+    <mat-form-field>
+        <input matInput type="password" required placeholder="Password" #password />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="onLogin(username.value, password.value)">
+        Login
+    </button>
+</form>

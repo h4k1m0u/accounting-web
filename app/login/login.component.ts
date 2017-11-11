@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { URL } from '../constants';
+import { MatSnackBar } from '@angular/material';
 
 // Success and error response interfaces
 interface TokenResponse {
@@ -29,12 +30,9 @@ interface ErrorResponse {
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    usernameError: string;
-    passwordError: string;
-    generalError: string;
-
     // inject http and auth
-    constructor(private http: HttpClient, private auth: AuthService, private router: Router) { }
+    constructor(private http: HttpClient, private auth: AuthService, private router: Router,
+                private snackBar: MatSnackBar) { }
 
     ngOnInit() { }
 
@@ -59,17 +57,18 @@ export class LoginComponent implements OnInit {
             },
             (err: ErrorResponse) => {
                 let error = err.error;
-                this.usernameError = '';
-                this.passwordError = '';
-                this.generalError = '';
 
-                // set error messages
-                if (error.hasOwnProperty('username'))
-                    this.usernameError = 'Username: ' + error.username[0];
-                if (error.hasOwnProperty('password'))
-                    this.passwordError = 'Password: ' + error.password[0];
-                if (error.hasOwnProperty('non_field_errors'))
-                    this.generalError = 'General error: ' + error.non_field_errors[0];
+                // show error messages in snackbar
+                if (error.hasOwnProperty('username') && error.hasOwnProperty('password'))
+                    this.snackBar.open('Username: ' + error.username[0] + ' Password: ' + error.password[0], 'Error', {duration: 2000});
+                else {
+                    if (error.hasOwnProperty('username'))
+                        this.snackBar.open('Username: ' + error.username[0], 'Error', {duration: 2000});
+                    if (error.hasOwnProperty('password'))
+                        this.snackBar.open('Password: ' + error.password[0], 'Error', {duration: 2000});
+                    if (error.hasOwnProperty('non_field_errors'))
+                        this.snackBar.open('Credentials: ' + error.non_field_errors[0], 'Error', {duration: 2000});
+                }
             }
         );
     }

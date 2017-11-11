@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+/* Import angular-material theme */
+/* https://coursetro.com/posts/code/67/Angular-4-Material-Tutorial */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+    margin: 0;
+    background: lightgray;
+}

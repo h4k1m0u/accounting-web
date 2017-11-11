@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>
+    New expense
+</h1>
+
+<mat-dialog-content>
+    <form>
+        <mat-form-field>
+            <input matInput type="text" required placeholder="Description" #description />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" required placeholder="Amount" #amount />
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onAdd(description.value, amount.value)">
+        Add
+    </button>
+
+    <button mat-raised-button mat-dialog-close color="warn">
+        No
+    </button>
+</mat-dialog-actions>
