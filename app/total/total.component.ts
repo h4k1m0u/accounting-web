@@ -5,6 +5,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { URL } from '../constants';
+import { AddService } from '../services/add.service';
 
 @Component({
     selector: 'app-total',
@@ -15,9 +16,18 @@ export class TotalComponent implements OnInit {
     total: number;
 
     // inject http
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private add: AddService) { }
 
     ngOnInit() {
+        this.getTotal()
+
+        // receive boolean from add component to update total
+        this.add.added.subscribe((isAdded) => {
+            this.getTotal();
+        });
+    }
+
+    getTotal() {
         // get total from the server
         this.http.get<number>(URL + '/api/total/').subscribe(
             res => {

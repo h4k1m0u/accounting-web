@@ -4,9 +4,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { URL } from '../constants';
-import { AddComponent } from '../add/add.component';
 import { AddService } from '../services/add.service';
 import { MatTableDataSource } from '@angular/material';
 
@@ -16,6 +14,13 @@ interface Expense {
     description: string;
     amount: string;
     user: string;
+}
+
+interface Feed {
+    count: number;
+    next: string;
+    previous: string;
+    results: Expense[];
 }
 
 @Component({
@@ -28,7 +33,7 @@ export class ExpensesComponent implements OnInit {
     displayedColumns = ['date', 'description', 'amount'];
 
     // inject http
-    constructor(private http: HttpClient, private router: Router, private add: AddService) { }
+    constructor(private http: HttpClient, private add: AddService) { }
 
     ngOnInit() {
         this.getExpenses()
@@ -41,10 +46,10 @@ export class ExpensesComponent implements OnInit {
 
     getExpenses() {
         // get expenses from the server
-        this.http.get<Expense[]>(URL + '/api/expenses/').subscribe(
+        this.http.get<Feed>(URL + '/api/expenses/').subscribe(
             res => {
-                //this.expenses = res;
-                this.expenses = new MatTableDataSource<Expense>(res);
+                let results: Expense[] = res.results;
+                this.expenses = new MatTableDataSource<Expense>(results);
             },
             err => {
                 console.log('Error: ' + err.message);
