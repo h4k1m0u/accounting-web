@@ -24,6 +24,10 @@
             <button mat-menu-item *ngIf="isLogged" routerLink="/expenses/logout">
                 <mat-icon>person_outline</mat-icon> Logout (<app-user></app-user>)
             </button>
+
+            <a mat-menu-item href="http://bookquotes.me" target="_blank">
+                <mat-icon>format_quote</mat-icon> Bookquotes
+            </a>
         </mat-menu>
     </nav>
 </header>
@@ -38,6 +42,8 @@
             <img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/images/generic/en_badge_web_generic.png'/>
         </a>
         <span class="spacer"></span>
-        <span>By Hakim</span>
+        <span>
+            By <a href="https://twitter.com/h4k1m0u" target="_blank" mat-raised-button color="primary">@h4k1m0u</a>
+        </span>
     </mat-toolbar>
 </footer>
