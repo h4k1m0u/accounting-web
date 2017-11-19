@@ -28,9 +28,9 @@ export class AppComponent {
 
         // redirect according to whether user logged in
         if (this.isLogged)
-            this.router.navigateByUrl('/expenses');
+            this.router.navigateByUrl('/expenses/list');
         else
-            this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/expenses/login');
     }
 
     openDialog() {
@@ -39,7 +39,8 @@ export class AppComponent {
 
         // show snackbar on success
         dialogRef.afterClosed().subscribe(res => {
-            this.snackBar.open('Expense "' + res + '" was added', 'Success', {duration: 2000});
+            if (res)
+                this.snackBar.open('Expense "' + res + '" was added', 'Success', {duration: 2000});
         });
     }
 }

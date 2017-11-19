@@ -19,6 +19,6 @@ export class LogoutComponent implements OnInit {
         this.auth.logged.next(false);
 
         // redirect to /login
-        this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('/expenses/login');
     }
 }

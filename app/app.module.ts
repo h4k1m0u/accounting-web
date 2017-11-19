@@ -36,11 +36,11 @@ import { AddService } from './services/add.service';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-    {path: 'login', component: LoginComponent},
-    {path: 'expenses', component: ExpensesComponent},
-    {path: 'logout', component: LogoutComponent},
-    {path: 'register', component: RegisterComponent},
-    {path: 'add', component: AddComponent}
+    {path: 'expenses/login', component: LoginComponent},
+    {path: 'expenses/list', component: ExpensesComponent},
+    {path: 'expenses/logout', component: LogoutComponent},
+    {path: 'expenses/register', component: RegisterComponent},
+    {path: 'expenses/add', component: AddComponent}
 ];
 
 

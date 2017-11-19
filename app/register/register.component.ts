@@ -64,7 +64,7 @@ export class RegisterComponent implements OnInit {
                         this.auth.logged.next(true);
 
                         // redirect to /expenses
-                        this.router.navigateByUrl('/expenses');
+                        this.router.navigateByUrl('/expenses/list');
                     },
                     err => {
                         console.log('Error: ' + err.message);

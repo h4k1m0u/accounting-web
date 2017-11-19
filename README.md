@@ -30,7 +30,7 @@ Just replace the `/src` folder using the content of this repo
 # Deploy app to server
 
 ```sh
-$ ng build --prod
+$ ng build --prod --deploy-url=expenses
 ```
 
-And a `dist` folder will be created at the root of the project.
+And a `dist` folder will be created at the root of the project, where its static files will be served from `/expenses`.

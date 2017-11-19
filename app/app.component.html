@@ -9,19 +9,19 @@
 
     <nav>
         <mat-menu #appMenu="matMenu">
-            <button mat-menu-item *ngIf="!isLogged" routerLink="/login">
+            <button mat-menu-item *ngIf="!isLogged" routerLink="/expenses/login">
                 <mat-icon>person</mat-icon> Login
             </button>
-            <button mat-menu-item *ngIf="!isLogged" routerLink="/register">
+            <button mat-menu-item *ngIf="!isLogged" routerLink="/expenses/register">
                 <mat-icon>person_add</mat-icon> Register
             </button>
-            <button mat-menu-item *ngIf="isLogged" routerLink="/expenses">
+            <button mat-menu-item *ngIf="isLogged" routerLink="/expenses/list">
                 <mat-icon>shopping_cart</mat-icon> Expenses
             </button>
             <button mat-menu-item *ngIf="isLogged" (click)="openDialog()">
                 <mat-icon>add_shopping_cart</mat-icon> Add
             </button>
-            <button mat-menu-item *ngIf="isLogged" routerLink="/logout">
+            <button mat-menu-item *ngIf="isLogged" routerLink="/expenses/logout">
                 <mat-icon>person_outline</mat-icon> Logout (<app-user></app-user>)
             </button>
         </mat-menu>
