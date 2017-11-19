@@ -29,7 +29,7 @@ export class TotalComponent implements OnInit {
 
     getTotal() {
         // get total from the server
-        this.http.get<number>(URL + '/api/total/').subscribe(
+        this.http.get<number>(URL + '/api/expenses/total/').subscribe(
             res => {
                 this.total = res;
             },
