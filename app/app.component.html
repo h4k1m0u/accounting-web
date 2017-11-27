@@ -18,6 +18,9 @@
             <button mat-menu-item *ngIf="isLogged" routerLink="/expenses/list">
                 <mat-icon>shopping_cart</mat-icon> Expenses
             </button>
+            <button mat-menu-item *ngIf="isLogged" routerLink="/expenses/chart">
+                <mat-icon>show_chart</mat-icon> Chart
+            </button>
             <button mat-menu-item *ngIf="isLogged" (click)="openDialog()">
                 <mat-icon>add_shopping_cart</mat-icon> Add
             </button>

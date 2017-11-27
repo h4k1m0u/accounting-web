@@ -21,6 +21,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 import { AddComponent } from './add/add.component';
+import { TotalMonthlyComponent } from './total-monthly/total-monthly.component';
 
 // import ngModel
 import { FormsModule } from '@angular/forms';
@@ -38,6 +39,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
     {path: 'expenses/login', component: LoginComponent},
     {path: 'expenses/list', component: ExpensesComponent},
+    {path: 'expenses/chart', component: TotalMonthlyComponent},
     {path: 'expenses/logout', component: LogoutComponent},
     {path: 'expenses/register', component: RegisterComponent},
     {path: 'expenses/add', component: AddComponent}
@@ -54,6 +56,7 @@ const routes: Routes = [
         RegisterComponent,
         UserComponent,
         AddComponent,
+        TotalMonthlyComponent,
     ],
     imports: [
         BrowserModule,
