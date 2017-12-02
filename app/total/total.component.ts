@@ -28,8 +28,11 @@ export class TotalComponent implements OnInit {
     }
 
     getTotal() {
+        // get current month
+        let month = new Date().getMonth() + 1;
+
         // get total from the server
-        this.http.get<number>(URL + '/api/expenses/total/').subscribe(
+        this.http.get<number>(URL + '/api/expenses/total/?month=' + month).subscribe(
             res => {
                 this.total = res;
             },

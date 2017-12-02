@@ -45,8 +45,11 @@ export class ExpensesComponent implements OnInit {
     }
 
     getExpenses() {
+        // get current month
+        let month = new Date().getMonth() + 1;
+
         // get expenses from the server
-        this.http.get<Feed>(URL + '/api/expenses/').subscribe(
+        this.http.get<Feed>(URL + '/api/expenses/?month=' + month).subscribe(
             res => {
                 let results: Expense[] = res.results;
                 this.expenses = new MatTableDataSource<Expense>(results);
