@@ -1,1 +1,1 @@
-export const URL: string = 'http://bookquotes.me';
+export const URL: string = 'http://gistutorials.loc';
