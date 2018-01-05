@@ -52,10 +52,10 @@ export class RegisterComponent implements OnInit {
         };
 
         // get created user from the server
-        this.http.post<User>(URL + '/api/auth/register/', body).subscribe(
+        this.http.post<User>(URL + '/api/auth/users/create/', body).subscribe(
             (res: User) => {
                 // login the newly-created user & get token from the server
-                this.http.post<TokenResponse>(URL + '/api/auth/login/', body).subscribe(
+                this.http.post<TokenResponse>(URL + '/api/auth/token/create/', body).subscribe(
                     (res: TokenResponse) => {
                         // login with token
                         this.auth.login(res.auth_token);
