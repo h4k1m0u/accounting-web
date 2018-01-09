@@ -35,7 +35,7 @@ export class LogoutComponent implements OnInit {
                 this.auth.logged.next(false);
 
                 // redirect to /login
-                this.router.navigateByUrl('/expenses/login');
+                this.router.navigateByUrl('/accounting/login');
             },
             (err: ErrorResponse) => {
                 let error = err.error;

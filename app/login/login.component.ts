@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
                 this.auth.logged.next(true);
 
                 // redirect to /expenses
-                this.router.navigateByUrl('/expenses/list');
+                this.router.navigateByUrl('/accounting/expenses');
             },
             (err: ErrorResponse) => {
                 let error = err.error;

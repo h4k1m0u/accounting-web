@@ -37,12 +37,12 @@ import { AddService } from './services/add.service';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-    {path: 'expenses/login', component: LoginComponent},
-    {path: 'expenses/list', component: ExpensesComponent},
-    {path: 'expenses/chart', component: TotalMonthlyComponent},
-    {path: 'expenses/logout', component: LogoutComponent},
-    {path: 'expenses/register', component: RegisterComponent},
-    {path: 'expenses/add', component: AddComponent}
+    {path: 'accounting/expenses', component: ExpensesComponent},
+    {path: 'accounting/expenses/chart', component: TotalMonthlyComponent},
+    {path: 'accounting/expenses/add', component: AddComponent},
+    {path: 'accounting/login', component: LoginComponent},
+    {path: 'accounting/logout', component: LogoutComponent},
+    {path: 'accounting/register', component: RegisterComponent},
 ];
 
 
