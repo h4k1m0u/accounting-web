@@ -23,6 +23,7 @@ $ ng
 7. Create a new service: `ng generate service <service-name>`
 8. Install `angular-material`: `npm install @angular/material @angular/cdk @angular/animations`
 9. Install `chartjs`: `npm install chart.js`
+10. Install `angulatics2`: `npm install angulartics2`
 
 # Installation of this repo
 

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { AddComponent } from './add/add.component';
 import { MatSnackBar } from '@angular/material';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 @Component({
     selector: 'app-root',
@@ -16,7 +17,8 @@ export class AppComponent {
     
     // inject auth
     constructor(private auth: AuthService, private router: Router, private cdRef:ChangeDetectorRef,
-                private dialog: MatDialog, private snackBar: MatSnackBar) { }
+                private dialog: MatDialog, private snackBar: MatSnackBar,
+                private googleAnalytics: Angulartics2GoogleAnalytics) { }
 
     ngOnInit() {
         // receive boolean from login/logout components to update menu

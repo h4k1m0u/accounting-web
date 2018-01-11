@@ -33,6 +33,10 @@ import { LoginInterceptor } from './login/login.interceptor';
 import { AuthService } from './services/auth.service';
 import { AddService } from './services/add.service';
 
+// import google analytics for angular
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+
 // import router
 import { RouterModule, Routes } from '@angular/router';
 
@@ -63,6 +67,7 @@ const routes: Routes = [
         FormsModule,
         HttpClientModule,
         RouterModule.forRoot(routes),
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
 
         // material
         BrowserAnimationsModule,
